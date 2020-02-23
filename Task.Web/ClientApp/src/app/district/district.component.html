@@ -1,0 +1,85 @@
+<div [hidden]="edited" style="width: 400px;">
+  <h3>تعديل حى</h3>
+  <form (ngSubmit)="onEdit()">
+    <div class="form-group">
+      <label for="name">أسم الحى</label>
+      <input type="text" class="form-control" id="nameEdit" required [(ngModel)]="district.name" name="nameEdit">
+    </div>
+    <div class="form-group">
+      <label for="area">المنطقة</label>
+      <select class="form-control" [(ngModel)]="district.areaId" (ngModelChange)="onAreaChange($event)" name="areasEdit">
+        <option *ngFor="let area of areas" value={{area.id}}>
+          {{area.name}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="city">المدينة</label>
+      <select class="form-control" [(ngModel)]="district.cityId" name="citiesEdit">
+        <option *ngFor="let city of cities" value={{city.id}}>
+          {{city.name}}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success add-btn">تعديل</button>
+  </form>
+</div>
+<div [hidden]="add" style="width: 400px;">
+  <h3>أضافة مدينة</h3>
+  <form (ngSubmit)="onAdd()">
+    <div class="form-group">
+      <label for="name">أسم الحى</label>
+      <input type="text" class="form-control" id="nameEdit" required [(ngModel)]="district.name" name="nameEdit">
+    </div>
+    <div class="form-group">
+      <label for="area">المنطقة</label>
+      <select class="form-control" [(ngModel)]="district.areaId" (ngModelChange)="onAreaChange($event)" name="areasAdd">
+        <option *ngFor="let area of areas" value={{area.id}}>
+          {{area.name}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="city">المدينة</label>
+      <select class="form-control" [(ngModel)]="district.cityId" name="citesAdd">
+        <option *ngFor="let city of cities" value={{city.id}}>
+          {{city.name}}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success add-btn">أضافة</button>
+
+  </form>
+</div>
+<div class="line"></div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>عرض الأحياء</h2>
+  </div>
+  <div class="panel-body">
+    <button (click)="addDistrict()" class="btn btn-success add-btn">أضافة</button>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>المسلسل</th>
+          <th>الحى</th>
+          <th>المدينة</th>
+          <th>المنطقة</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let district of districts">
+          <td>{{district.id}}</td>
+          <td>{{district.name}}</td>
+          <td>{{district.city}}</td>
+          <td>{{district.area}}</td>
+          <td>
+            <button (click)="setDistrict(district.id)" class="btn btn-info" style="margin-left: 10px">تحرير</button>
+            <button (click)="deleteDistrict(district.id)" class="btn btn-danger">حذف</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs
+/Task.Core/bin/Debug/netcoreapp3.0
+/Task.Core/obj
+/Task.Infrastructure/bin/Debug/netcoreapp3.0
+/Task.Infrastructure/obj
+/Task.Service/bin/Debug/netcoreapp3.0
+/Task.Service/obj

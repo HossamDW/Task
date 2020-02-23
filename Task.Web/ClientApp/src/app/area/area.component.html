@@ -1,0 +1,51 @@
+<div [hidden]="edited" style="width: 400px;">
+  <h3>تعديل منطقة</h3>
+  <form (ngSubmit)="onEdit()">
+    <div class="form-group">
+      <label for="name">أسم المنطقة</label>
+      <input type="text" class="form-control" id="nameEdit" required [(ngModel)]="area.name" name="nameEdit">
+    </div>
+
+    <button type="submit" class="btn btn-success add-btn">تعديل</button>
+  </form>
+</div>
+<div [hidden]="add" style="width: 400px;">
+  <h3>أضافة منطقة</h3>
+  <form (ngSubmit)="onAdd()">
+    <div class="form-group">
+      <label for="name">أسم المنطقة</label>
+      <input type="text" class="form-control" id="nameAdd" required [(ngModel)]="area.name" name="nameAdd">
+    </div>
+
+    <button type="submit" class="btn btn-success add-btn">أضافة</button>
+
+  </form>
+</div>
+<div class="line"></div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>عرض المناطق</h2>
+  </div>
+  <div class="panel-body">
+    <button (click)="addArea()" class="btn btn-success add-btn">أضافة</button>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>المسلسل</th>
+          <th>المنطقة</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let area of areas">
+          <td>{{area.id}}</td>
+          <td>{{area.name}}</td>
+          <td>
+            <button (click)="setArea(area.id)" class="btn btn-info" style="margin-left: 10px">تحرير</button>
+            <button (click)="deleteArea(area.id)" class="btn btn-danger">حذف</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
